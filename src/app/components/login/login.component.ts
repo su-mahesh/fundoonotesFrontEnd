@@ -1,8 +1,9 @@
-import { Token } from '@angular/compiler/src/ml_parser/lexer';
+
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators,} from '@angular/forms';
 import {UserService} from '../../services/UserServices/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import {
   MatSnackBarConfig,
 MatSnackBarHorizontalPosition,
@@ -26,7 +27,7 @@ export class LoginComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   constructor(private formBuilder:FormBuilder, private userSevice:UserService,
-    public snackBar: MatSnackBar) { 
+    public snackBar: MatSnackBar, private route: Router) { 
     this.loginForm = this.formBuilder.group(
       {
         email: new FormControl('', [Validators.required, 
@@ -64,6 +65,7 @@ export class LoginComponent implements OnInit {
           console.log(response['token']);
           localStorage.setItem('FunDooNotesJWT', response['token']);
           this.openSnackBar('Login success', 2000);
+          this.route.navigate(['Dashboard']);
         },
         error => {
           console.log(error['error']['message']);
