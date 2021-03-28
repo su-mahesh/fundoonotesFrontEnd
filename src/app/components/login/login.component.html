@@ -1,7 +1,4 @@
 
-<div>
-
-</div>
   <div class="container">
     <div class="child">
       <div>
@@ -14,8 +11,6 @@
         <span class="color-fundoo" style="color:#EA4335">e</span>
         <span class="color-fundoo" style="color:#4285F4">s</span>
       </div>
-       
-  
     </div>
     <div class="child signin">
       <span>Sign in</span>
@@ -28,7 +23,7 @@
      
           <div class="email">
             <mat-form-field class="user" appearance="outline">
-              <mat-label >Email</mat-label>
+              <mat-label >Username</mat-label>
               <input matInput placeholder="" formControlName="email">
               <span class="input-suffix" matSuffix >@gmail.com</span>
               <mat-error *ngIf="loginForm.hasError('required', 'email')">
@@ -57,13 +52,17 @@
      
           <div class="btns">
             <div class="create">
-            <a [routerLink]="['/signup']" >
-            Create account
-            </a>
+              <a [routerLink]="['/signup']" >
+              Create account
+              </a>
+            </div>
+            <div class="forget">
+              <a [routerLink]="['/ForgetPassword']" >
+              Forgot password?
+              </a>
             </div>
             <div class="submit-btn">
-            
-            <button type="submit" mat-raised-button >Login</button>
+              <button type="submit" mat-raised-button >Login</button>
             </div>
          </div>
     </form>

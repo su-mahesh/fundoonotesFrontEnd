@@ -116,9 +116,11 @@ body {
   display:inline-block;
 }
 
-.dash-icon{
+.dash-icon, .dash{
   width:"244";
   height: "244";
+  text-align: center;
+  align-content: center;
 }
 .form-item{
   width: min-content;
@@ -217,4 +219,11 @@ a{
 .mat-focus-indicator, .mat-raised-button .mat-button-base{
   background-color: #1a73e8;
   color: white;
+}
+.dasp-span{
+  text-align: center;
+  font-family: inherit;
+  font-size: 16px;
+    font-weight: 300;
+    width: 100%;
 }

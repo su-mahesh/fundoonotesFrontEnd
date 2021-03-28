@@ -62,7 +62,6 @@ export class LoginComponent implements OnInit {
       }
       this.userSevice.login(reqData).subscribe(
         (response: any) => {
-          console.log(response['token']);
           localStorage.setItem('FunDooNotesJWT', response['token']);
           this.openSnackBar('Login success', 2000);
           this.route.navigate(['Dashboard']);

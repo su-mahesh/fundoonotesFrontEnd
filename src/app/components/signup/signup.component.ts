@@ -62,8 +62,6 @@ export class SignupComponent implements OnInit {
         ])
       },
       { validators: this.checkPasswords },
-      
-
     );   
     this.isActive = true;
     this.notSame = false;
@@ -101,7 +99,6 @@ export class SignupComponent implements OnInit {
           this.openSnackBar('Registration failed: '+error['error']['message'], 2000,);
         }
         );
-   
     } 
   } 
 

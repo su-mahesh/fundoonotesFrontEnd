@@ -1,8 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators,} from '@angular/forms';
+import {FormBuilder, FormGroup,FormGroupDirective, NgForm, FormControl, Validators,} from '@angular/forms';
 import { from } from 'rxjs';
 import {UserService} from '../../services/UserServices/user.service';
-//import {AppRoutingModule} from '../../app-routing.module';
+import { ErrorStateMatcher, } from '@angular/material/core';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {
+    MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const invalidCtrl = !! (control && control.invalid && control.parent!.dirty);
+    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+
+    return (invalidCtrl || invalidParent);
+  }
+} 
 import { Router, RouterStateSnapshot, ActivatedRoute, Params  } from '@angular/router';
 @Component({
   selector: 'app-reset-password',
@@ -10,23 +24,49 @@ import { Router, RouterStateSnapshot, ActivatedRoute, Params  } from '@angular/r
   styleUrls: ['./reset-password.component.scss']
 })
 
+
 export class ResetPasswordComponent implements OnInit {
- // public id: string;
+
+  matcher = new MyErrorStateMatcher();
   public isActive: boolean;
   public token: string;
   resetPassword:FormGroup;
+
+  public EmailTld: string = '@gmail.com';
+  actionButtonLabel: string = 'Retry';
+  action: boolean = false;
+  setAutoHide: boolean = false;
+  autoHide: number = 10000;
+
   constructor(private formBuilder:FormBuilder,private Service : UserService,
-    private activatedRoute: ActivatedRoute) { 
+    private activatedRoute: ActivatedRoute,
+    public snackBar: MatSnackBar) { 
     
     this.resetPassword = this.formBuilder.group(
-      {
-        password: ['', Validators.required],
-        confirmPassword: ['', Validators.required],
-      }
+    {
+      password:  new FormControl('', [Validators.required, 
+        Validators.pattern('^(?=.{8,20}$)(?=.*[\\d])(?=.*[A-Z])[\\w]*[\\W][\\w]*$')
+      ]),
+      confirmPassword:  new FormControl('', [Validators.required, 
+      ])
+    },
+      { validators: this.checkPasswords },
     );   
     this.isActive = true;
     this.token = '';
   } 
+  openSnackBar(message: string, duration: number) {
+    let config = new MatSnackBarConfig();
+    config.duration = duration == 0 ? this.autoHide : duration;
+    this.snackBar.open(message, undefined, config);
+  }
+
+  checkPasswords(group: FormGroup) {
+    let pass = group.controls.password.value;
+    let confirmPass = group.controls.confirmPassword.value;
+  
+    return pass === confirmPass ? null : { notSame: true }
+  }
   TogglePassword(){
     this.isActive = this.isActive ? false : true 
   }
@@ -40,12 +80,27 @@ export class ResetPasswordComponent implements OnInit {
   }
   
   ResetPassword(){
+  if(this.resetPassword.valid){
+    this.openSnackBar('Resetting password...', 0);
     let reqData ={
       NewPassword: this.resetPassword.get('password')?.value
     }
+    
     this.Service.resetPassword(reqData).subscribe(
-      (response: any) => {
-        console.log(response);
-      });
+      response => {
+        this.openSnackBar('Password reset successful', 2000);
+       
+      },
+      error => {
+        try {
+          console.log(error['error']['message']);
+          this.openSnackBar('Password reset failed: '+error['error']['message'], 2000,);
+        } catch (error) {
+          this.openSnackBar('Password reset link is invalid',0);
+        }
+      
+      }
+      );
+    } 
   }
 }
