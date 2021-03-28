@@ -30,6 +30,7 @@
             <mat-form-field class="user" appearance="outline">
               <mat-label >Email</mat-label>
               <input matInput placeholder="" formControlName="email">
+              <span class="input-suffix" matSuffix >@gmail.com</span>
               <mat-error *ngIf="loginForm.hasError('required', 'email')">
                 *Required
               </mat-error>

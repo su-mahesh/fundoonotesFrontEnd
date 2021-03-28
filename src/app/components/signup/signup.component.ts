@@ -1,13 +1,14 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormGroupDirective, FormControl, NgForm, FormGroup, PatternValidator, Validators,} from '@angular/forms';
 import {UserService} from '../../services/UserServices/user.service';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { ErrorStateMatcher, } from '@angular/material/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {
     MatSnackBarConfig,
   MatSnackBarHorizontalPosition,
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const invalidCtrl = !! (control && control.invalid && control.parent!.dirty);
@@ -21,7 +22,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  
+ // encapsulation: ViewEncapsulation.None
 })
 
 
@@ -71,10 +72,8 @@ export class SignupComponent implements OnInit {
     let config = new MatSnackBarConfig();
     config.verticalPosition = this.verticalPosition;
     config.horizontalPosition = this.horizontalPosition;
-    config.panelClass = 'register-snackbar';
     config.duration = duration == 0 ? this.autoHide : duration;
     this.snackBar.open(message, undefined, config);
-
   }
 
   ngOnInit(): void {
@@ -110,7 +109,7 @@ export class SignupComponent implements OnInit {
     this.isActive = this.isActive ? false : true 
   }
   
- checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+ checkPasswords(group: FormGroup) {
   let pass = group.controls.password.value;
   let confirmPass = group.controls.confirmPassword.value;
 
