@@ -1,0 +1,112 @@
+<div class="outer">
+  <div class="inner">
+    <div class="div-form">
+      <div class="FunDooNotes">
+        <div>
+          <span class="color-fundoo-F" style="color:#4285F4">F</span>
+          <span class="color-fundoo" style="color:#4285F4">un</span>
+          <span class="color-fundoo" style="color:#EA4335">doo</span>
+          <span class="color-fundoo" style="color:#FBBC05">n</span>
+          <span class="color-fundoo" style="color:#4285F4">o</span>
+          <span class="color-fundoo" style="color:#34A853">t</span>
+          <span class="color-fundoo" style="color:#EA4335">e</span>
+          <span class="color-fundoo" style="color:#4285F4">s</span>
+        </div>
+        <br>
+          <span class="create">Create your FunDooNotes Account</span>
+      </div>
+      <form class="RegisterForm" [formGroup]="registerForm" (ngSubmit)=" registerForm.valid && register()" >
+        
+          <div class="form-container"> 
+            
+            <div class="name form-item ">
+              <div class="name-f">
+                <mat-form-field class="fname" appearance="outline">
+                  <mat-label >First Name</mat-label>
+                  <input matInput placeholder="" name="firstname" formControlName="firstName" >
+                  <mat-error *ngIf="registerForm.hasError('required', 'firstName')">
+                    *Required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              <div class="name-l">
+                <mat-form-field class="lname" appearance="outline">
+                  <mat-label >Last Name</mat-label>
+                  <input matInput placeholder="" name="lastName" formControlName="lastName" >
+                  <mat-error *ngIf="registerForm.hasError('required', 'lastName')">
+                    *Required
+                  </mat-error>
+                </mat-form-field>
+              </div>
+              
+            </div>
+        
+            <div class="email form-item">
+              <mat-form-field class="username" appearance="outline">
+                <mat-label >Username</mat-label>
+                <input matInput placeholder="" name="email" formControlName="email">
+                <span class="input-suffix" matSuffix >@gmail.com</span>
+                <mat-error *ngIf="registerForm.hasError('required', 'email')">
+                  *Required
+                </mat-error>
+                <mat-hint>You can use letters, numbers & periods</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="password form-item">
+              <mat-form-field class="new-password" appearance="outline">
+                <mat-label >Password</mat-label>
+                <input type="password" id="password" type="{{ isActive ? 'password' : 'text' }}" matInput placeholder="" name="password" formControlName="password">
+               
+                <mat-error *ngIf="registerForm.hasError('required', 'password')">
+                  Please enter your new password
+                </mat-error>
+              </mat-form-field>
+            
+              <mat-form-field class="confirm-password" appearance="outline">
+                <mat-label >Confirm</mat-label>
+                <input type="{{ isActive ? 'password' : 'text' }}" matInput placeholder=""  formControlName="confirmPassword" [errorStateMatcher]="matcher" >
+     
+                 <mat-error *ngIf="registerForm.hasError('notSame')">
+                  Passwords do not match
+                </mat-error>
+                <mat-error *ngIf="registerForm.hasError('required', 'confirmPassword') && !registerForm.hasError('notSame')">
+                  *Required
+                </mat-error>
+  
+              </mat-form-field>
+              <mat-hint class="pass-hint"  >Use 8 or more characters with a mix of letters, numbers at least 1 uppercase, 1 digit & 1 symbol</mat-hint>
+            </div>
+           
+            <div class="Show-password form-item">
+              <section class="">
+                <mat-checkbox color="primary" class="Show-password" (change)="isActive = isActive ? false : true"  >Show password</mat-checkbox>
+              </section>
+          
+            </div>
+           <div class="btns">
+             <div class="login">
+              <a [routerLink]="['/login']" >
+              Login instead
+              </a>
+             </div>
+            <div class="submit-btn">
+              
+              <button type="submit" mat-raised-button >Register</button>
+            </div>
+           </div>
+            
+          </div>
+    
+      </form>
+    </div>
+  
+    <div class="div-icon">
+      <div class="dash">
+        <img class="dash-icon" width="244" height="244" id="" src="../../../assets/images/account.svg">
+      </div>
+    </div>
+  </div>
+
+ 
+
+</div>

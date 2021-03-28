@@ -1,0 +1,69 @@
+
+<div>
+
+</div>
+  <div class="container">
+    <div class="child">
+      <div>
+        <span class="color-fundoo-F" style="color:#4285F4">F</span>
+        <span class="color-fundoo" style="color:#4285F4">un</span>
+        <span class="color-fundoo" style="color:#EA4335">doo</span>
+        <span class="color-fundoo" style="color:#FBBC05">n</span>
+        <span class="color-fundoo" style="color:#4285F4">o</span>
+        <span class="color-fundoo" style="color:#34A853">t</span>
+        <span class="color-fundoo" style="color:#EA4335">e</span>
+        <span class="color-fundoo" style="color:#4285F4">s</span>
+      </div>
+       
+  
+    </div>
+    <div class="child signin">
+      <span>Sign in</span>
+    </div>
+    <div class="child use">
+      <span>Use your FunDooNotes Account</span>
+    </div>
+    
+    <form [formGroup]="loginForm" class="child loginForm" (ngSubmit)="loginForm.valid && login()">
+     
+          <div class="email">
+            <mat-form-field class="user" appearance="outline">
+              <mat-label >Email</mat-label>
+              <input matInput placeholder="" formControlName="email">
+              <mat-error *ngIf="loginForm.hasError('required', 'email')">
+                *Required
+              </mat-error>
+              <mat-hint>You can use letters, numbers & periods</mat-hint>
+            </mat-form-field>
+          </div>
+          <div class="password">
+            <mat-form-field class="pass" appearance="outline">
+              <mat-label >Password</mat-label>
+              <input type="password" id="password" type="{{ isActive ? 'password' : 'text' }}" matInput placeholder="" formControlName="password">
+              <mat-error *ngIf="loginForm.hasError('required', 'password')">
+                Please enter your password
+              </mat-error>
+              <mat-hint class="pass-hint"  >Use 8 or more characters with a mix of letters, numbers at least 1 uppercase, 1 digit & 1 symbol
+              </mat-hint>
+            </mat-form-field>          
+          </div>
+          <div class="Show-password">
+            <section class="example-section">
+              <mat-checkbox color="primary" (change)="TogglePassword()"  >Show password</mat-checkbox>
+            </section>
+        
+          </div>
+     
+          <div class="btns">
+            <div class="create">
+            <a [routerLink]="['/signup']" >
+            Create account
+            </a>
+            </div>
+            <div class="submit-btn">
+            
+            <button type="submit" mat-raised-button >Login</button>
+            </div>
+         </div>
+    </form>
+  </div>
