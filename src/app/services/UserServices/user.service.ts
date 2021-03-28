@@ -19,13 +19,9 @@ export class UserService {
   }
 
   resetPassword(data: any){
-  let headers = new HttpHeaders()
-  .set('Authorization', 'Bearer '+localStorage.getItem('FunDooNotesJWT'));  
-
-  console.log(headers);
-  let options = { headers: headers };
-
-    console.log(headers);
+    let headers = new HttpHeaders()
+    .set('Authorization', 'Bearer '+localStorage.getItem('FunDooNotesJWT'));  
+    let options = { headers: headers };
     return this.httpService.post('Account/ResetPassword', data, options );
   }
 

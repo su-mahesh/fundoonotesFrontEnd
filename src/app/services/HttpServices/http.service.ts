@@ -15,4 +15,10 @@ export class HttpService {
     {return this.http.post(this.BaseUrl + url, data, headers);}
     return this.http.post(this.BaseUrl + url, data);
   }
+
+  Get(url: any, headers: any){
+    if(headers != null)
+    {return this.http.get(this.BaseUrl + url, headers);}
+    return this.http.get(this.BaseUrl + url);
+  }
 }
