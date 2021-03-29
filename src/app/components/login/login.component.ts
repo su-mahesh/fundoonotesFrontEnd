@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators,} from '@angular/forms';
 import {UserService} from '../../services/UserServices/user.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -13,7 +13,8 @@ MatSnackBarVerticalPosition,
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+ // encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
@@ -46,9 +47,10 @@ export class LoginComponent implements OnInit {
   }
   openSnackBar(message: string, duration: number) {
     let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = duration == 0 ? this.autoHide : duration;
+    if (duration != 0)
+    {
+      config.duration = duration; 
+    }
     this.snackBar.open(message, undefined, config);
   }
 
@@ -67,8 +69,16 @@ export class LoginComponent implements OnInit {
           this.route.navigate(['Dashboard']);
         },
         error => {
-          console.log(error['error']['message']);
-          this.openSnackBar('Login failed: '+error['error']['message'], 2000,);
+          try {
+            if(error['status'] == 0){
+              this.openSnackBar('Login failed:  server offline', 2000,);
+            }
+            else{
+              this.openSnackBar('Login failed: '+error['error']['message'], 2000,);
+            }
+            } catch (error) {
+
+          }
         });
     } 
   }

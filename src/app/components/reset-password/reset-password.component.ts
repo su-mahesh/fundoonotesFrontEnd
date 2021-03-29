@@ -57,7 +57,10 @@ export class ResetPasswordComponent implements OnInit {
   } 
   openSnackBar(message: string, duration: number) {
     let config = new MatSnackBarConfig();
-    config.duration = duration == 0 ? this.autoHide : duration;
+    if (duration != 0)
+    {
+      config.duration = duration; 
+    }
     this.snackBar.open(message, undefined, config);
   }
 
@@ -88,19 +91,20 @@ export class ResetPasswordComponent implements OnInit {
     
     this.Service.resetPassword(reqData).subscribe(
       response => {
-        this.openSnackBar('Password reset successful', 2000);
-       
+        this.openSnackBar('Password reset successful', 2000); 
       },
       error => {
         try {
-          console.log(error['error']['message']);
-          this.openSnackBar('Password reset failed: '+error['error']['message'], 2000,);
+          if(error['status'] == 0){
+            this.openSnackBar('Password reset failed: server offline', 2000,);
+          }
+          else{
+            this.openSnackBar('Password reset failed: '+error['error']['message'], 2000);
+          }
         } catch (error) {
           this.openSnackBar('Password reset link is invalid',0);
         }
-      
-      }
-      );
+      });
     } 
   }
 }

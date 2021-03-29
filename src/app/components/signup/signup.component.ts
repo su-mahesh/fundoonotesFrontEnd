@@ -4,17 +4,19 @@ import {UserService} from '../../services/UserServices/user.service';
 import { ErrorStateMatcher, } from '@angular/material/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {
-    MatSnackBarConfig,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
+    MatSnackBarConfig
 } from '@angular/material/snack-bar';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const invalidCtrl = !! (control && control.invalid && control.parent!.dirty);
-    const invalidParent = !!(control && control.parent && control.parent.invalid && control.parent.dirty);
+    const invalidCtrl = !! (control && control.invalid && control.parent?.dirty);
+    const invalidParent =
+     !!(control && control.parent && control.parent.invalid && control.parent.dirty 
+       && control.parent.hasError('notSame'));
 
-    return (invalidCtrl || invalidParent);
+    return (
+      invalidCtrl ||
+       invalidParent);
   }
 } 
 
@@ -33,12 +35,9 @@ export class SignupComponent implements OnInit {
   public notSame: boolean;
   registerForm:FormGroup;
   public EmailTld: string = '@gmail.com';
-  actionButtonLabel: string = 'Retry';
   action: boolean = false;
   setAutoHide: boolean = false;
   autoHide: number = 10000;
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   
   addExtraClass: boolean = false;
   constructor(private formBuilder:FormBuilder, private userSevice:UserService,
@@ -58,7 +57,7 @@ export class SignupComponent implements OnInit {
         password:  new FormControl('', [Validators.required, 
           Validators.pattern('^(?=.{8,20}$)(?=.*[\\d])(?=.*[A-Z])[\\w]*[\\W][\\w]*$')
         ]),
-        confirmPassword:  new FormControl('', [Validators.required, 
+        confirmPassword:  new FormControl('', [Validators.required
         ])
       },
       { validators: this.checkPasswords },
@@ -68,9 +67,10 @@ export class SignupComponent implements OnInit {
   } 
   openSnackBar(message: string, duration: number) {
     let config = new MatSnackBarConfig();
-    config.verticalPosition = this.verticalPosition;
-    config.horizontalPosition = this.horizontalPosition;
-    config.duration = duration == 0 ? this.autoHide : duration;
+    if (duration != 0)
+    {
+      config.duration = duration; 
+    }
     this.snackBar.open(message, undefined, config);
   }
 
@@ -91,12 +91,15 @@ export class SignupComponent implements OnInit {
       this.userSevice.registerUser(reqData).subscribe(
         response => {
           console.log("register successfull", response);
-          this.openSnackBar('Registration successful', 2000);
-         
+          this.openSnackBar('Registration successful', 2000);      
         },
         error => {
-          console.log(error['error']['message']);
-          this.openSnackBar('Registration failed: '+error['error']['message'], 2000,);
+          if(error['status'] == 0){
+            this.openSnackBar('Registration failed: server offline', 2000,);
+          }
+          else{
+            this.openSnackBar('Registration failed: '+error['error']['message'], 2000);
+          }
         }
         );
     } 

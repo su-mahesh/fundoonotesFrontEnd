@@ -8,13 +8,13 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
-    path: 'signup', component: SignupComponent
+    path: 'signup', component: SignupComponent, pathMatch: 'full'
   },
-  { path : 'login', component: LoginComponent},
+  { path : 'login', component: LoginComponent, pathMatch: 'full', },
   { path : 'ForgetPassword', component: ForgetPasswordComponent},
   { path : 'ResetPassword/:token', component: ResetPasswordComponent},
   {
-    path: '', component: SignupComponent
+    path: '', component: SignupComponent, pathMatch: 'full'
   },
   {
     path: 'Dashboard', component: DashboardComponent

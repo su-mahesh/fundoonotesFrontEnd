@@ -27,6 +27,9 @@
                   <mat-error *ngIf="registerForm.hasError('required', 'firstName')">
                     *Required
                   </mat-error>
+                  <mat-error *ngIf="registerForm.hasError('pattern', 'firstName')">
+                    pattern do not match
+                  </mat-error>
                 </mat-form-field>
               </div>
               <div class="name-l">
@@ -65,13 +68,10 @@
               <mat-form-field class="confirm-password" appearance="outline">
                 <mat-label >Confirm</mat-label>
                 <input type="{{ isActive ? 'password' : 'text' }}" matInput placeholder=""  formControlName="confirmPassword" [errorStateMatcher]="matcher" >
-     
                  <mat-error *ngIf="registerForm.hasError('notSame')">
                   Passwords do not match
                 </mat-error>
-                <mat-error *ngIf="registerForm.hasError('required', 'confirmPassword') && !registerForm.hasError('notSame')">
-                  *Required
-                </mat-error>
+
   
               </mat-form-field>
               <mat-hint class="pass-hint"  >Use 8 or more characters with a mix of letters, numbers at least 1 uppercase, 1 digit & 1 symbol</mat-hint>
@@ -85,7 +85,7 @@
             </div>
            <div class="btns">
              <div class="login">
-              <a [routerLink]="['/login']" >
+              <a routerLink="/login" >
               Login instead
               </a>
              </div>
