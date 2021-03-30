@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
         error => {
           try {
             if(error['status'] == 0){
-              this.openSnackBar('Login failed:  server offline', 2000,);
+              this.openSnackBar('Login failed: server offline', 2000,);
             }
             else{
               this.openSnackBar('Login failed: '+error['error']['message'], 2000,);
