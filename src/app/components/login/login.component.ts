@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, Validators,} from '@angular/forms';
 import {UserService} from '../../services/UserServices/user.service';
@@ -74,10 +73,10 @@ export class LoginComponent implements OnInit {
               this.openSnackBar('Login failed: server offline', 2000,);
             }
             else{
-              this.openSnackBar('Login failed: '+error['error']['message'], 2000,);
+              this.openSnackBar('Login failed: '+error['error']['message'], 2000);
             }
-            } catch (error) {
-
+            } 
+            catch (error) {
           }
         });
     } 

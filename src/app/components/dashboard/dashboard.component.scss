@@ -1,3 +1,148 @@
-div{
-    font-size: inherit;
+@import "~roboto-fontface/css/roboto/roboto-fontface.css";
+body{
+  font-family: 'Roboto',arial,sans-serif;
+    font-size: 15px;
+    margin: 0;
 }
+mat-toolbar{
+  border-bottom: #DADCE0 solid 1px;
+}
+mat-sidenav{
+  width: 280px;
+  border: none;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;
+}
+::ng-deep .mat-list-text{
+  font-family: "Google Sans", Roboto, Arial, sans-serif  !important;
+} 
+span.nav-menu{
+  font-family: "Google Sans", Roboto, Arial, sans-serif  !important;
+}
+.head-img{
+  border: 0;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+  margin-bottom: 4px;
+  padding-right: 4px;
+}
+.mat-icon-button{
+  border-radius: 50%;
+  display: inline-block;
+  margin: 0 4px;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  -webkit-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+svg{
+  fill: #202124;
+  flex-shrink: 0;
+    padding: 0 12px;
+}
+::ng-deep a.mat-list-item:focus{
+  background : #feefc3 !important;
+  background-color: #feefc3 !important;
+}
+.nav-menu{
+  margin-left: 20px;
+  letter-spacing: .01785714em;
+  font-family: 'Google Sans',Roboto,Arial,sans-serif;
+  font-size: .875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #202124;
+  cursor: pointer;
+}
+.mat-list-item{
+
+  border-radius: 0 25px 25px 0;
+}
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .mat-toolbar{
+    background: white;
+    color: gray;
+  }
+  .mat-sidenav-content
+  {
+background-color: white
+  } 
+  .th{
+    min-width: 232px;
+    padding-right: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .example-is-mobile .example-toolbar {
+    position: fixed;
+    /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+    z-index: 2;
+  }
+  // ::ng-deep .mat-form-field-flex{
+  //   max-width: 720px;
+  //   position: relative;
+  //   height: 10px;
+  //   padding-left: 10px;
+    
+  // }
+  ::ng-deep .mat-form-field-infix
+  {
+    padding: 0 0 0 0 !important;
+  }
+  
+  ::ng-deep .mat-form-field{ 
+    height: 60px;
+
+  }
+  ::ng-deep .mat-form-field-outline {
+
+    background: #f1f3f4 !important;
+  }
+  h1.title-head {
+    padding-left: 4px;
+    color: #5f6368;
+    opacity: 1;
+    font-family: 'Product Sans',Arial,sans-serif;
+    font-size: 22px;
+    position: relative;
+    vertical-align: middle;
+    padding-top: 6px;
+  }
+
+  
+  .example-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+       causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  .example-is-mobile .example-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+       `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }
+ .note-create 
+ {
+  margin: 32px auto 16px auto;
+  position: relative;
+  width: 600px; 
+  position: relative  !important;
+  // border: solid 1px black;
+ }
+ .container{
+  // width: 100%;
+   min-width: 0;
+ }

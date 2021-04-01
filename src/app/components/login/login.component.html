@@ -21,7 +21,7 @@
     
     <form [formGroup]="loginForm" class="child loginForm" (ngSubmit)="loginForm.valid && login()">
      
-          <div class="email">
+          <div class="email" id="loginEmail">
             <mat-form-field class="user" appearance="outline">
               <mat-label >Username</mat-label>
               <input matInput placeholder="" formControlName="email">

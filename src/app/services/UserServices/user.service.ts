@@ -1,11 +1,12 @@
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpService } from '../HttpServices/http.service';
+import { JwtHelperService } from "@auth0/angular-jwt";
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  helper = new JwtHelperService();
   constructor(private httpService : HttpService) { }
 
   registerUser(data: any){
@@ -28,4 +29,11 @@ export class UserService {
   ForgetPassword(data: any){
     return this.httpService.post('Account/ForgetPassword', data, null );
   }
+
+  authenticateUser(){
+    const token = localStorage.getItem("FunDooNotesJWT")
+    const isExpired = this.helper.isTokenExpired(token || undefined);
+    return !isExpired;
+  }
+
 }

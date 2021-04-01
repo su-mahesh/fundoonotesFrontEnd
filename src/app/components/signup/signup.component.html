@@ -15,10 +15,9 @@
         <br>
           <span class="create">Create your FunDooNotes Account</span>
       </div>
-      <form class="RegisterForm" [formGroup]="registerForm" (ngSubmit)=" registerForm.valid && register()" >
+      <form id="RegisterForm" class="RegisterForm" [formGroup]="registerForm" (ngSubmit)=" registerForm.valid && register()" >
         
-          <div class="form-container"> 
-            
+          <div id="form-container" class="form-container"> 
             <div class="name form-item ">
               <div class="name-f">
                 <mat-form-field class="fname" appearance="outline">

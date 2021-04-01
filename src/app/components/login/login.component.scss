@@ -72,6 +72,9 @@ margin-top: 20px;
   top: -0.1em !important; 
   color: rgba(0,0,0,.6);
 }
+#loginEmail>mat-form-field{
+ // height: 70px !important;
+}
 .loginForm{
   flex-direction: column;
   flex-wrap: wrap;
