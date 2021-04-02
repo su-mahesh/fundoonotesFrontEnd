@@ -6,13 +6,15 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NotesService {
-
+  headers = new HttpHeaders()
+  .set('Authorization', 'Bearer '+localStorage.getItem('FunDooNotesJWT')); 
+  options = { headers: this.headers };
   constructor(private httpService : HttpService) { }
-
+  createNote(data: any){
+    return this.httpService.post('Notes/AddNote', data, this.options)
+  }
   GetActiveNotes(){
-    let headers = new HttpHeaders()
-    .set('Authorization', 'Bearer '+localStorage.getItem('FunDooNotesJWT')); 
-    let options = { headers: headers };
-    return this.httpService.Get('Notes', options)
+
+    return this.httpService.Get('Notes', this.options)
   }
 }

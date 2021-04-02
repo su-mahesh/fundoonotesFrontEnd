@@ -57,6 +57,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { NoteCreateComponent } from './components/note-create/note-create.component';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,7 +67,9 @@ import { NoteCreateComponent } from './components/note-create/note-create.compon
     ResetPasswordComponent,
     ForgetPasswordComponent,
     DashboardComponent,
-    NoteCreateComponent
+    NoteCreateComponent,
+    CollaboratorComponent,
+    ReminderComponent
   ],
   imports: [
     BrowserModule,

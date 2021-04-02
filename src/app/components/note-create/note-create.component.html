@@ -1,7 +1,7 @@
 <mat-card class="cn-card ">
 
     <div class="card-title"  *ngIf="fullEdit">
-        <input class="title-in font" matInput placeholder="Title" >
+        <input class="title-in font" matInput placeholder="Title" id="title" #title >
         <div class="pin-div" (click)="togglePin()" matTooltip="Pin note" matTooltipPosition='below'>
             <div role="button" class="pin" [ngClass]="pin ? 'pinned-back' : 'unpinned-back'"> 
             </div>
@@ -9,12 +9,14 @@
     </div>
     
     <div class="note-input" (click)=displayFull()>
-        <div contenteditable="true" aria-multiline="true" role="textbox"  data-placeholder="Take a note..." class="notes-main" aria-label="Take a note…" tabindex="0" spellcheck="true"></div>
+        <div contenteditable="true" aria-multiline="true" role="textbox"  
+        data-placeholder="Take a note..." class="notes-main" aria-label="Take a note…" 
+        tabindex="0" spellcheck="true" id="note" ></div>
         <div class="img-upload" *ngIf="!fullEdit"></div>
     </div>
     <div class="card-bottom" id="bottom" *ngIf="fullEdit">
         <div class="note-prop">
-            <div class="reminder prop" role="button" matTooltip="Remind me" matTooltipClass="prop-tip" matTooltipPosition='below'></div>
+            <div class="reminder prop" role="button" (click)="move()" matTooltip="Remind me" matTooltipClass="prop-tip" matTooltipPosition='below'></div>
             <div class="collaborator prop" role="button" matTooltip="Collaborator" matTooltipPosition='below'></div>
             <div class="back-img prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
             <div class="archive prop" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
@@ -22,7 +24,7 @@
             <div class="undo prop" role="button" matTooltip="Undo" matTooltipPosition='below'></div>
             <div class="redo prop" role="button" matTooltip="Redo" matTooltipPosition='below'></div>
         </div>
-        <div class="close-note">
+        <div class="close-note" (click)="takeNote()">
             Close
         </div>
     </div>
