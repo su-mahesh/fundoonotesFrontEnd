@@ -1,5 +1,5 @@
-import { Component, OnInit, HostListener, ElementRef, AfterViewInit, Input, ViewChild  } from '@angular/core';
-import {FormBuilder, FormGroup, FormControl, Validators,} from '@angular/forms';
+import { Component, OnInit, HostListener, ElementRef, AfterViewInit, Input, ViewChild, Output, EventEmitter  } from '@angular/core';
+import {FormBuilder, FormGroup, FormControl, Validators, } from '@angular/forms';
 import {NotesService} from '../../services/NotesService/notes.service';
 @Component({
   selector: 'app-note-create',
@@ -10,6 +10,7 @@ export class NoteCreateComponent implements OnInit, AfterViewInit  {
   pin : boolean = false;
   fullEdit : boolean = false;
 
+  @Output() messageEvent = new EventEmitter<string>();
 
   @HostListener('document:click', ['$event'])
   clickout(event: any) {
@@ -35,6 +36,7 @@ export class NoteCreateComponent implements OnInit, AfterViewInit  {
       this.NotesService.createNote(reqData).subscribe(
         (response: any) => {
         console.log(response);
+          this.messageEvent.emit()
       });;
     }
     this.pin = false

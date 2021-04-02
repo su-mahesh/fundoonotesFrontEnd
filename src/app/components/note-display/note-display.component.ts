@@ -10,6 +10,6 @@ export class NoteDisplayComponent implements OnInit {
   constructor() { }
   title: string = '';
   ngOnInit(): void {
-    console.log(this.childMessage);
+  
   }
 }

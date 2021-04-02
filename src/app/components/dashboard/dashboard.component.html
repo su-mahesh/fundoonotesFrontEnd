@@ -36,13 +36,16 @@
       </mat-sidenav>
   
       <mat-sidenav-content class="container">
-        <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
+  
         <div class="note-create">
-          <app-note-create ></app-note-create>
+          <app-note-create  (messageEvent)="receiveMessage($event)"></app-note-create>
         </div>
-        <div class="display-notes">
-          <app-note-display *ngFor="let content of notes" [childMessage]="content"></app-note-display>
+        <div class="out">
+          <div class="display-notes">
+            <app-note-display *ngFor="let content of notes" [childMessage]="content"></app-note-display>
+          </div>
         </div>
+        
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

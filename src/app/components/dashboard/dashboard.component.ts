@@ -15,7 +15,9 @@ export class DashboardComponent implements OnInit {
     notes!: Array<{title:string, text:string, createdOn:Date, IsPin:boolean}>;
     title : string; 
     fillerContent : any;
-  
+    receiveMessage($event: any) {
+      this.loadActiveNotes();
+    }
        
   private _mobileQueryListener: () => void;
 
@@ -32,11 +34,12 @@ export class DashboardComponent implements OnInit {
   loadActiveNotes(){
     this.NotesService.GetActiveNotes().subscribe(
       (response: any) => {
-      this.notes = response['notes']['result']
+      this.notes = response['notes']['result'];
+      console.log(this.notes);
     });
   }
   ngOnDestroy(): void {
-    this.mobileQuery.removeListener(this._mobileQueryListener);
+  //  this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
 }
