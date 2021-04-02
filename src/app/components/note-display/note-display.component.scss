@@ -1,0 +1,99 @@
+.note-d, .mat-card{
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-transition-duration: .218s;
+    transition-duration: .218s;
+    -webkit-transition-property: background,border,opacity,-webkit-box-shadow,-webkit-transform;
+    transition-property: background,border,opacity,box-shadow,transform;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+    box-shadow: none  !important;
+}
+
+.nd{
+    min-height: 60px;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: max-height .218s ease-in;
+    transition: max-height .218s ease-in; 
+}
+.note{
+    width: 240px;
+    user-select: none;
+    margin: 5px;
+    
+}
+.t{
+    font-size: 1.125rem;
+    padding-top: 12px;
+    font-family: Roboto,Arial,sans-serif;
+}
+.n1{
+    letter-spacing: .01428571em;
+    font-weight: 400;
+    line-height: 1.25rem;
+}
+.n{
+    
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5rem;
+}
+.bot{
+    align-items: center;
+    color: rgba(0,0,0, .54 );
+    display: flex;
+
+    flex-direction: row;
+  
+    font-size: 12px;
+    line-height: 26px;
+    margin: 4px 0;
+    position: relative;
+    -webkit-transition: background-color .218s ease-in-out,box-shadow .218s ease-in-out;
+    transition: background-color .218s ease-in-out,box-shadow .218s ease-in-out;
+}
+.prop{
+    color: #202124;
+    opacity: .71;
+    margin: 0 3px;
+    height: 32px;
+    margin: 0 8px;
+    width: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    height: 24px;
+    opacity: .54;
+    width: 24px;
+}
+.tool{
+    webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    bottom: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    opacity: 0;
+    -webkit-transition-duration: .218s;
+    transition-duration: .218s;
+    -webkit-transition-property: opacity;
+    transition-property: opacity;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+}

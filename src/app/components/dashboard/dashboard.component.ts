@@ -11,11 +11,11 @@ import {ChangeDetectorRef, OnDestroy} from '@angular/core';
 export class DashboardComponent implements OnInit {  
     mobileQuery: MediaQueryList;
     value = 'Search';
-//  fillerNav = Array.from({length: 5}, (_, i) => `Nav Item ${i + 1}`);
-title : string; 
-  fillerContent = Array.from({length: 5}, () =>
-      ``);
-
+    shouldRun = true;
+    notes!: Array<{title:string, text:string, createdOn:Date, IsPin:boolean}>;
+    title : string; 
+    fillerContent : any;
+  
        
   private _mobileQueryListener: () => void;
 
@@ -26,15 +26,17 @@ title : string;
     this.title = 'FunDooNotes';
   }
   ngOnInit(): void {
-
-    this.NotesService.GetActiveNotes().subscribe(
-      (response: any) => {
-      console.log(response);
-    });
+    this.loadActiveNotes();
   }
   
+  loadActiveNotes(){
+    this.NotesService.GetActiveNotes().subscribe(
+      (response: any) => {
+      this.notes = response['notes']['result']
+    });
+  }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  shouldRun = true;
+
 }

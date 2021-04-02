@@ -28,7 +28,8 @@ export class NoteCreateComponent implements OnInit, AfterViewInit  {
     let reqData={
       title :(<HTMLInputElement>document.getElementById("title"))?
        (<HTMLInputElement>document.getElementById("title")).value:'',
-      text : (<HTMLInputElement>document.getElementById("note")).innerHTML.trim() 
+      text : (<HTMLInputElement>document.getElementById("note")).innerHTML.trim(),
+      IsPin: this.pin
     }
     if(reqData.text != ''){
       this.NotesService.createNote(reqData).subscribe(
@@ -36,7 +37,7 @@ export class NoteCreateComponent implements OnInit, AfterViewInit  {
         console.log(response);
       });;
     }
-   
+    this.pin = false
   }
 
   constructor(private eRef: ElementRef, private elRef:ElementRef, private NotesService:NotesService) {

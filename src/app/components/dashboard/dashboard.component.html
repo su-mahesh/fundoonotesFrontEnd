@@ -40,7 +40,9 @@
         <div class="note-create">
           <app-note-create ></app-note-create>
         </div>
-
+        <div class="display-notes">
+          <app-note-display *ngFor="let content of notes" [childMessage]="content"></app-note-display>
+        </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>

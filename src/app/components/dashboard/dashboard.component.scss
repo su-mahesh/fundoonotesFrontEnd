@@ -160,3 +160,13 @@ background-color: white
   -webkit-border-radius: 4px;
   border-radius: 4px;
  }
+ .display-notes{
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+  align-items: flex-start;
+   pointer-events: none;
+   background-color: transparent;
+   margin: 0 auto;
+   position: absolute;
+ }
