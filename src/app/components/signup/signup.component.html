@@ -38,6 +38,9 @@
                   <mat-error *ngIf="registerForm.hasError('required', 'lastName')">
                     *Required
                   </mat-error>
+                  <mat-error *ngIf="registerForm.hasError('pattern', 'lastName')">
+                    pattern do not match
+                  </mat-error>
                 </mat-form-field>
               </div>
               
@@ -51,6 +54,9 @@
                 <mat-error *ngIf="registerForm.hasError('required', 'email')">
                   *Required
                 </mat-error>
+                <mat-error *ngIf="registerForm.hasError('pattern', 'email')">
+                  pattern do not match
+                </mat-error>
                 <mat-hint>You can use letters, numbers & periods</mat-hint>
               </mat-form-field>
             </div>
@@ -58,9 +64,11 @@
               <mat-form-field class="new-password" appearance="outline">
                 <mat-label >Password</mat-label>
                 <input type="password" id="password" type="{{ isActive ? 'password' : 'text' }}" matInput placeholder="" name="password" formControlName="password">
-               
                 <mat-error *ngIf="registerForm.hasError('required', 'password')">
                   Please enter your new password
+                </mat-error>
+                <mat-error *ngIf="registerForm.hasError('pattern', 'password')">
+                  pattern do not match
                 </mat-error>
               </mat-form-field>
             

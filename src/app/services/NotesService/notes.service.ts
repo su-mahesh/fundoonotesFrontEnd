@@ -6,6 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class NotesService {
+
   headers = new HttpHeaders()
   .set('Authorization', 'Bearer '+localStorage.getItem('FunDooNotesJWT')); 
   options = { headers: this.headers };
@@ -16,5 +17,9 @@ export class NotesService {
   GetActiveNotes(){
 
     return this.httpService.Get('Notes', this.options)
+  }
+  updateNote(data: any ) {
+ 
+    return this.httpService.put('Notes/Update', data, this.options);
   }
 }

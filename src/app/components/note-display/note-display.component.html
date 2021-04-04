@@ -1,18 +1,18 @@
 <div class="note">
-    <mat-card class="note-d">
-        <div class="nd" >
-            <div id="title"  contenteditable="false" aria-multiline="true" role="textbox" class="t n1" dir="ltr">{{ childMessage['title'] }}</div>
-            <div id="note" contenteditable="false" aria-multiline="true" role="textbox" class="n n1" dir="ltr">{{ childMessage['text'] }}</div>
+    <mat-card [id]="'note-'+childMessage.noteID"  class="note-d note-before" ng-class="">
+        <div id="dntn" class="nd" (click)="updateNoteProcess()" >
+            <div id="title" #title  contenteditable="false" aria-multiline="true" role="textbox" class="t n1" dir="ltr">{{ childMessage['title'] }}</div>
+            <div id="note" contenteditable="false" aria-multiline="true" role="textbox" class="n n1" >{{ childMessage['text'] }}</div>
+            
         </div>
         <div class="bot">
             <div class="tool" role="toolbar">
-                <div role="button" class="prop" tabindex="0" aria-label="Pin" style="user-select: none;"></div>
-                <div role="button" class="prop" aria-label="Mark as done" aria-hidden="true" style="user-select: none; display: none;"></div>
-                <div role="button" class="prop" tabindex="0" aria-label="Remind me" style="user-select: none;"></div>
-                <div role="button" class="prop" tabindex="0" aria-label="Collaborator" style="user-select: none;"></div>
-                <div role="button" class="prop" tabindex="0" aria-label="Change color" style="user-select: none;"></div>
-                <div role="button" class="prop" tabindex="0" aria-label="Add image" style="user-select: none;"></div>
-               
+                <div role="button" class="prop reminder" tabindex="0" aria-label="Remind me" style="user-select: none;"></div>
+                <div role="button" class="prop collaborator" tabindex="0" aria-label="Collaborator" style="user-select: none;"></div>
+                <div role="button" class="prop back-color" tabindex="0" aria-label="Change color" style="user-select: none;"></div>
+                <div role="button" class="prop back-image" tabindex="0" aria-label="Add image" style="user-select: none;"></div>
+                <div role="button" class="prop archive" tabindex="0" aria-label="Archive" style="user-select: none;"></div>
+                <div role="button" class="prop more" tabindex="0" aria-label="More" style="user-select: none;"></div>
             </div>
         </div>
     </mat-card>

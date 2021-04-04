@@ -146,7 +146,7 @@
         top: 5px;
         opacity: .71;
         position: absolute;
-        z-index: 201;
+        z-index: 1;
         cursor: pointer;
         -webkit-border-radius: 50%;
         border-radius: 50%;
@@ -219,5 +219,4 @@
         content:attr(data-placeholder);
         color:gray
       }
-      
 }

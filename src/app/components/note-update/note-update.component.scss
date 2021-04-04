@@ -1,0 +1,95 @@
+.dis-note{
+    width: 600px;
+    z-index: 20001;
+    padding: 0;
+}
+.dis-note>.tn{
+    max-height: 432.025px;
+    overflow-y: auto;
+}
+.dis-note>.tn>.tp>.u-pin{
+    margin: auto;
+    top: 12px;
+    opacity: .71;
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij4KICA8cGF0aCBmaWxsPSJub25lIiBkPSJNMCAwaDI0djI0SDB6Ii8+CiAgPHBhdGggZmlsbD0iIzAwMCIgZD0iTTE3IDR2N2wyIDN2MmgtNnY1bC0xIDEtMS0xdi01SDV2LTJsMi0zVjRjMC0xLjEuOS0yIDItMmg2YzEuMTEgMCAyIC44OSAyIDJ6TTkgNHY3Ljc1TDcuNSAxNGg5TDE1IDExLjc1VjRIOXoiLz4KPC9zdmc+Cg==);
+    background-repeat: no-repeat;
+    right: 12px;
+    height: 32px;
+    width: 32px;
+    float: right;
+    background-size: 24px 24px;
+  //  position: absolute;
+}
+.un-t{
+    font-family: 'Google Sans',Roboto,Arial,sans-serif;
+    font-size: 1.375rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.75rem;
+    word-wrap: break-word;
+    outline: none;
+    padding: 10px 15px;
+    padding-bottom: 12px;
+    padding-top: 16px;
+    -webkit-transition: box-shadow .218s ease-in-out,background-color .218s ease-in;
+    flex: 1 0 auto;
+}
+.un-n{
+    letter-spacing: .00625em;
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    min-height: 46px;
+    padding: 4px 16px 12px 16px;
+    box-sizing: border-box;
+    font-variant-ligatures: none;
+    outline: none;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+.un-t:empty:before, .un-n:empty:before {
+    content:attr(data-placeholder);
+    color:gray
+  }
+
+  .nu-bottom{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 4px 0;
+  }
+  .nu-prop{
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+  }
+  .mat-card>:last-child:not(.mat-card-footer), .mat-card-content>:last-child:not(.mat-card-footer) {
+    margin-bottom: 4px;
+}
+.prop{
+    color: #202124;
+    opacity: .71;
+    margin: 0 8px;
+    height: 32px;
+    width: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    -webkit-background-size: 18px 18px;
+    background-size: 18px 18px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    outline: none;
+}
+.close-note{
+    margin-right: 15px;
+    font-size: .875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    padding: 8px 24px;
+}
+.tp{
+    display: flex;
+    flex-direction: row;
+}

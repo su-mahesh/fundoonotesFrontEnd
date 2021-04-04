@@ -34,25 +34,49 @@
             <span class="nav-menu">Trash</span></a>
         </mat-nav-list>
       </mat-sidenav>
-  
       <mat-sidenav-content class="container">
   
         <div class="note-create">
-          <app-note-create  (messageEvent)="receiveMessage($event)"></app-note-create>
+          <app-note-create  (messageEvent)="receiveMessage($event)" ></app-note-create>
         </div>
         <div class="out">
           <div class="display-notes">
-            <app-note-display *ngFor="let content of notes" [childMessage]="content"></app-note-display>
+            <app-note-display  (messageEvent)="receiveNoteMessage($event)" *ngFor="let content of notes" [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
+          
           </div>
         </div>
-        
+
       </mat-sidenav-content>
     </mat-sidenav-container>
+
   </div>
   
-  <div *ngIf="!shouldRun">Please open on Stackblitz to see result</div>
+  <div class="note-update" *ngIf="updating">
+    <!-- <app-note-update [updateNote]="updateNote" class="note-u"></app-note-update> -->
+    <mat-card class="dis-note">
+      <div class="tn">
+          <div class="tp">
+              <div id="up-title" contenteditable="true" data-placeholder="Title" aria-multiline="true" role="textbox" class="notranslate un-t" tabindex="0" spellcheck="true" aria-label="Title" >{{updateNote['title']}}</div>
+              <div  role="button" class="u-pin" tabindex="0" aria-label="Pin note" aria-pressed="false" style="user-select: none;"></div>  
+          </div>
+          <div id="up-note" contenteditable="true" data-placeholder="Note" aria-multiline="true" role="textbox" class="un-n" tabindex="0" spellcheck="true" aria-label="Note">{{ updateNote['text'] }}</div>
+      </div>
+      <div class="nu-bottom" id="bottom" >
+          <div class="nu-prop">
+              <div class="reminder prop" role="button"  matTooltip="Remind me" matTooltipClass="prop-tip" matTooltipPosition='below'></div>
+              <div class="collaborator prop" role="button" matTooltip="Collaborator" matTooltipPosition='below'></div>
+              <div class="back-color prop" role="button" matTooltip="change color" matTooltipPosition='below'></div>
+              <div class="back-image prop" role="button" matTooltip="Add image" matTooltipPosition='below'></div>
+              <div class="archive prop" role="button" matTooltip="Archive" matTooltipPosition='below'></div>
+              <div class="more prop" role="button" matTooltip="More" matTooltipPosition='below'></div>
+              <div class="undo prop" role="button" matTooltip="Undo" matTooltipPosition='below'></div>
+              <div class="redo prop" role="button" matTooltip="Redo" matTooltipPosition='below'></div>
+          </div>
+          <div class="close-note" >
+              Close
+          </div>
+      </div>
+  </mat-card>
   
-  
-  <!-- Copyright 2020 Google LLC. All Rights Reserved.
-      Use of this source code is governed by an MIT-style license that
-      can be found in the LICENSE file at http://angular.io/license -->
+  </div>
+  <div *ngIf="updating" (click)="UpdateNote()" id="block" class="block" ></div>

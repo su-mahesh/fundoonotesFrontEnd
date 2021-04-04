@@ -21,4 +21,12 @@ export class HttpService {
     {return this.http.get(this.BaseUrl + url, headers);}
     return this.http.get(this.BaseUrl + url);
   }
+
+  put(url: any, data : any, headers: any){
+    if(headers != null)
+    {console.log(headers);
+      return this.http.put(this.BaseUrl + url, data, headers);}
+    return this.http.put(this.BaseUrl + url, data);
+    
+  }
 }
