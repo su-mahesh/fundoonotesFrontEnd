@@ -22,4 +22,8 @@ export class NotesService {
  
     return this.httpService.put('Notes/Update', data, this.options);
   }
+  deleteNote(NoteID: number)
+  {
+    return this.httpService.delete('Notes/delete/'+NoteID, this.options);
+  }
 }

@@ -43,9 +43,6 @@ export class NoteCreateComponent implements OnInit, AfterViewInit  {
     this.pin = false
   }
 
-   move() {
-    console.log(this.elRef.nativeElement.offsetTop);
-  }
   ngAfterViewInit() {
   }
 

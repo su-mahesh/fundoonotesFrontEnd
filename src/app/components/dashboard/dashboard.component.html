@@ -1,4 +1,4 @@
-<div id="main" class="example-container" [class.example-is-mobile]="mobileQuery.matches"  *ngIf="shouldRun">
+<div id="main" class="example-container" [class.example-is-mobile]="mobileQuery.matches"  >
     <mat-toolbar color="primary" class="example-toolbar">
       <div class="th">
         <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -6,8 +6,8 @@
         <h1 class="title-head">{{title}}</h1></div>
        
       <div>
-        <mat-form-field class="Search" appearance="outline">
-            <input matInput placeholder="Search" >
+        <mat-form-field class="Search" appearance="outline" #search>
+            <input matInput placeholder="Search" name="Search" >
             <button mat-button  matSuffix mat-icon-button aria-label="Clear" >
                 <mat-icon>close</mat-icon>
                 </button>
@@ -41,26 +41,33 @@
         </div>
         <div class="out">
           <div class="display-notes">
-            <app-note-display  (messageEvent)="receiveNoteMessage($event)" *ngFor="let content of notes" [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
-          
+            <app-note-display  (messageEvent)="receiveNoteMessage($event)" (moreEvent)="receiveMoreEvent($event)" *ngFor="let content of notes" [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
+            
+            <mat-card *ngIf="more" [style.top.px]="top" [style.left.px]="left" class="moremenu" aria-hidden="false" role="menu" aria-haspopup="true" tabindex="0">
+              <div class="delete-more menu-more" (click)="deleteNote()" role="menuitem" id=":1" style="user-select: none;">
+                  <div class="menu-list delete-note" style="user-select: none;">Delete note</div>
+              </div>
+              <div class="menu-more" role="menuitem" id=":2" style="user-select: none;">
+                  <div class="" style="user-select: none;">Add label</div>
+              </div >
+          </mat-card>
           </div>
         </div>
-
       </mat-sidenav-content>
     </mat-sidenav-container>
 
-  </div>
+  </div> 
   
-  <div class="note-update" *ngIf="updating">
+  <div class="note-update" *ngIf="updating" (loaded)="focusNote()">
     <!-- <app-note-update [updateNote]="updateNote" class="note-u"></app-note-update> -->
-    <mat-card class="dis-note">
+    <mat-card class="dis-note" >
       <div class="tn">
           <div class="tp">
               <div id="up-title" contenteditable="true" data-placeholder="Title" aria-multiline="true" role="textbox" class="notranslate un-t" tabindex="0" spellcheck="true" aria-label="Title" >{{updateNote['title']}}</div>
-              <div  role="button" class="u-pin" tabindex="0" aria-label="Pin note" aria-pressed="false" style="user-select: none;"></div>  
+              <div  role="button" class="u-pin" tabindex="0" aria-label="Pin note" aria-pressed="false" style="user-select: none;" autofocus></div>  
           </div>
-          <div id="up-note" contenteditable="true" data-placeholder="Note" aria-multiline="true" role="textbox" class="un-n" tabindex="0" spellcheck="true" aria-label="Note">{{ updateNote['text'] }}</div>
-      </div>
+          <div id="upnote" name="upnotename" contenteditable="true" data-placeholder="Note" aria-multiline="true" role="textbox" class="un-n" tabindex="1" spellcheck="true" aria-label="Note" #upnote>{{ updateNote['text'] }}</div>
+        </div>
       <div class="nu-bottom" id="bottom" >
           <div class="nu-prop">
               <div class="reminder prop" role="button"  matTooltip="Remind me" matTooltipClass="prop-tip" matTooltipPosition='below'></div>
@@ -79,4 +86,4 @@
   </mat-card>
   
   </div>
-  <div *ngIf="updating" (click)="UpdateNote()" id="block" class="block" ></div>
+  <div *ngIf="updating" (click)="UpdateNote()" id="block" class="block" #updateNote></div>
