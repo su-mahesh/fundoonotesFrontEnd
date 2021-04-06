@@ -138,7 +138,7 @@ background-color: white
  {
   margin: 32px auto 16px auto;
   position: relative;
-  width: 600px; 
+  width: 100%; 
   position: relative  !important;
   // border: solid 1px black;
  }
@@ -161,12 +161,14 @@ background-color: white
   border-radius: 4px;
  }
  .display-notes{
+  width: -webkit-fill-available;
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-  align-items: flex-start;
+   justify-content: center;
+  align-items: center;
    background-color: transparent;
-   margin: 0 auto;
+   margin: auto;
    position: absolute;
    padding-bottom: 24px;
  }
@@ -331,4 +333,10 @@ background-color: white
 }
 .menu-more:hover{
   background-color: #e7e7e7;
+}
+
+@media screen and (max-width: 780px) {
+  app-note-display{
+    width: -webkit-fill-available;
+  }
 }
