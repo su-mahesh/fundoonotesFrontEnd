@@ -1,5 +1,5 @@
 <div class="note">
-    <mat-card [id]="'note-'+childMessage.noteID" class="note-d note-before" ng-class="">
+    <div [id]="'note-'+childMessage.noteID" class="note-d note-before" ng-class="">
         <div id="dntn" class="nd" (click)="updateNoteProcess()" >
             <div id="title" #title  contenteditable="false" aria-multiline="true" role="textbox" class="t n1" dir="ltr">{{ childMessage['title'] }}</div>
             <div id="note" contenteditable="false" aria-multiline="true" role="textbox" class="n n1" >{{ childMessage['text'] }}</div>
@@ -15,5 +15,5 @@
                 <div role="button" id="moremenu" (click)="move($event)" class="prop more" tabindex="0" aria-label="More" matTooltip="More" matTooltipClass="prop-tip" matTooltipPosition='below'></div>
             </div>
         </div>
-    </mat-card>
+    </div>
 </div>

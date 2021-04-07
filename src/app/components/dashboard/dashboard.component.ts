@@ -4,6 +4,7 @@ import {MediaMatcher} from '@angular/cdk/layout';
 import {ChangeDetectorRef, OnDestroy, Renderer2} from '@angular/core';
 import {NoteDisplayComponent} from '../note-display/note-display.component';
 import {NoteCreateComponent} from '../note-create/note-create.component';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,11 @@ import {NoteCreateComponent} from '../note-create/note-create.component';
 })
 
 export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {  
+  public myOptions: NgxMasonryOptions = {
+    gutter: 10,
+    fitWidth: true,
 
+  };
     updating: boolean = false;
     mobileQuery: MediaQueryList;
     value = 'Search';
@@ -28,7 +33,7 @@ export class DashboardComponent implements OnInit, AfterViewInit, OnChanges {
     deleteNoteId: number = 0;
     prevNoteID : number = 0;
 
-   constructor(private renderer: Renderer2, private elRef:ElementRef, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private NotesService: NotesService) {
+   constructor( private renderer: Renderer2, private elRef:ElementRef, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private NotesService: NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);

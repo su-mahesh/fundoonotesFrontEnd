@@ -43,7 +43,7 @@
 .note{
     width: 240px;
     overflow: visible;
-    margin: 5px;   
+    margin: 2px;   
 }
 .t{
     font-size: 1.125rem;
@@ -133,8 +133,8 @@
     line-height: 1.5rem;
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 785px) {
     .note{
-        width: inherit;
+        width: max-content;
     }
   }

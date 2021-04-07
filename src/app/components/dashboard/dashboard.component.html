@@ -40,18 +40,28 @@
           <app-note-create  (messageEvent)="receiveMessage($event)" ></app-note-create>
         </div>
         <div class="out">
-          <div class="display-notes">
-            <app-note-display  (messageEvent)="receiveNoteMessage($event)" (moreEvent)="receiveMoreEvent($event)" *ngFor="let content of notes" [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
-            
-            <mat-card *ngIf="more" [style.top.px]="top" [style.left.px]="left" class="moremenu" aria-hidden="false" role="menu" aria-haspopup="true" tabindex="0">
-              <div class="delete-more menu-more" (click)="deleteNote()" role="menuitem" id=":1" style="user-select: none;">
-                  <div class="menu-list delete-note" style="user-select: none;">Delete note</div>
-              </div>
-              <div class="menu-more" role="menuitem" id=":2" style="user-select: none;">
-                  <div class="" style="user-select: none;">Add label</div>
-              </div >
-          </mat-card>
-          </div>
+          <!-- <div class="display-notes">
+              </div> -->
+        
+          <!-- <app-note-display  (messageEvent)="receiveNoteMessage($event)" (moreEvent)="receiveMoreEvent($event)" *ngFor="let content of notes" [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>            
+         -->
+       
+         <ngx-masonry class="grid" [options]="myOptions">
+          <!-- <mat-card  ngxMasonryItem class="masonry-item" *ngFor="let content of notes">
+            <app-note-display  (messageEvent)="receiveNoteMessage($event)"  (moreEvent)="receiveMoreEvent($event)"  [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
+         </mat-card> -->
+         <app-note-display ngxMasonryItem class="masonry-item" *ngFor="let content of notes" (messageEvent)="receiveNoteMessage($event)"  (moreEvent)="receiveMoreEvent($event)"  [childMessage]="content" [id]="'D'+content.noteID"></app-note-display>
+
+        </ngx-masonry>
+
+          <mat-card *ngIf="more" [style.top.px]="top" [style.left.px]="left" class="moremenu" aria-hidden="false" role="menu" aria-haspopup="true" tabindex="0">
+            <div class="delete-more menu-more" (click)="deleteNote()" role="menuitem" id=":1" style="user-select: none;">
+                <div class="menu-list delete-note" style="user-select: none;">Delete note</div>
+            </div>
+            <div class="menu-more" role="menuitem" id=":2" style="user-select: none;">
+                <div class="" style="user-select: none;">Add label</div>
+            </div >
+        </mat-card>
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>

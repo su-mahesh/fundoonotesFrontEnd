@@ -160,17 +160,22 @@ background-color: white
   -webkit-border-radius: 4px;
   border-radius: 4px;
  }
- .display-notes{
-  width: -webkit-fill-available;
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: center;
-  align-items: center;
-   background-color: transparent;
-   margin: auto;
-   position: absolute;
-   padding-bottom: 24px;
+ .grid {
+  margin: 0 auto !important;
+}
+ .mat-card{
+  padding: 0;
+  box-shadow: none !important;
+  // width: -webkit-fill-available;
+  //  display: flex;
+  //  flex-direction: row;
+  //  flex-wrap: wrap;
+  //  justify-content: center;
+  // align-items: flex-start;
+  //  background-color: transparent;
+  //  margin: auto;
+  //  position: absolute;
+  //  padding-bottom: 24px;
  }
  .note-update{
   position: fixed;
@@ -335,8 +340,11 @@ background-color: white
   background-color: #e7e7e7;
 }
 
-@media screen and (max-width: 780px) {
-  app-note-display{
-    width: -webkit-fill-available;
+@media screen and (max-width: 785px) {
+  .grid{
+    width: 100%;
   }
+}
+.masonry-item{
+  margin-bottom: 10px;
 }
